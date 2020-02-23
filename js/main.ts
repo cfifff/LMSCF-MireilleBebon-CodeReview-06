@@ -1,6 +1,8 @@
-let localiteArray = [];
+let localiteArray: string[] = [];
 
 class Localite {
+	
+	type:string;
 	city:string;
 	zip:number;
 	address:string;
@@ -10,8 +12,13 @@ class Localite {
 	day:number;
 	month:string;
 	year:number;
+	visit:boolean;
+	
 
-	constructor(city, zip, address, doornumber,images,author,day,month,year) { 
+	
+	constructor(type,city, zip, address, doornumber,images,author,day,month,year,visit) { 
+		
+		this.type = type
        this.city = city;
        this.zip = zip;
        this.address = address;
@@ -21,40 +28,52 @@ class Localite {
        this.day = day;
        this.month = month;
        this.year = year;
-}
+       this.visit = visit;
+       
 }
 
-class Market extends Localite {
-  visit: boolean;
-  description:string;
-
-  constructor(city, zip, address, doornumber, images,author,day,month,year, visit,description) {
-    super(city, zip, address, doornumber, images,author,day,month,year);
-    this.visit = visit;
-    this.description = description;
-    localiteArray.push(this);
-  }
-  marketInfo() {
+Info() {
     return `
      
-      <div class="col-10 col-md-4">
-      <div class="card">
-      		<div class="absolute">
-              <h3 onclick="addvisit(${this.city})">${this.city}</h3>
-              	<button type="button" class="btn btn-primary">
+     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+		
+        		<h4 class="card-text"">${this.city}
+        		
+        		
+        		<small><button type="button" class="btn btn-primary">
   				Profile <span class="badge badge-light">100</span>
-  				</button>
-                     
-            	<a href="singlemarket.html" onclick=return marketDetails();><img class="card-img-top" src="${this.images}" alt="${this.city}" width="300"></a>         
-          	</div>
+  				</button></small></h4>
+
+      <div class="card">  		 
+      			     		
+   			<div>              
+            	 <img class="card-img-top" src="${this.images}" alt="${this.city}" width="300">
+            </div> 
+           	<div class="absoluteTop">
+              	<h4><span class="badge badge-light text-primary">${this.type}</span></h4>
+            </div>         
+          	
           	<div class="card-img-overlay">
             	<p class="card-text">${this.author}${this.day}${this.month}${this.year}</p>
           	</div>
         </div>
-      </div>
-    
+      
+    </div>
     `;
   }
+}
+
+/*class Market extends Localite {
+  visit: boolean;
+  description:string;
+
+  constructor(type,city, zip, address, doornumber, images,author,day,month,year, visit,description) {
+    super(type,city, zip, address, doornumber, images,author,day,month,year);
+    this.visit = visit;
+    this.description = description;
+    localiteArray.push(this);
+  }
+  
   marketDetails() {
     return `
     <div class="col">
@@ -79,11 +98,179 @@ class Market extends Localite {
       
     `;
   }
-}
+   
 
-let cityl  = new Market("wien", 2700, "steinbach", 36, 'img/market1.png',"mireille",23,"juillet",09,"", false );
-document.write(cityl.marketInfo())
-document.write(cityl.marketDetails())
+}
+let cityl  = new Localite("","location","wien", 2700, "steinbach", 36, 'img/market1.png',"mireille",23,"juillet",09,"", false );
+/*document.write(cityl.marketInfo())*/
+
+/*document.getElementById('target').innerHTML=cityl.Info();
+/*document.getElementById('content').innerHTML=cityl.marketDetails();*/
+/*document.getElementById('content').innerHTML = cityl.marketDetails();
+
+class Events extends Localite {
+  visit: boolean;
+  description:string;
+  meetanddrink:string;
+
+  constructor(type,city, zip, address, doornumber, images,author,day,month,year, visit,description,meetanddrink) {
+    super(type,city, zip, address, doornumber, images,author,day,month,year);
+    this.visit = visit;
+    this.description = description;
+    this.meetanddrink = meetanddrink
+    localiteArray.push(this);
+  }
+  
+  infoDetails() {
+    return `
+    <div class="col">
+        <!-- Jumbotron -->
+          <div class="jumbotron h-md-50 mx-2" style="background-image: url(img/"${this.images}" ); background-size: cover; background-repeat: no-repeat;">
+        	
+            <h1>There's more to boots than meets the eye...</h1>
+            <p>...there's the inside portion where you put your feet.</p>
+          </div>
+     </div>   
+        <!-- End of Jumbotron -->
+      
+      <div class="container pt-3">
+     
+            <h4 class="card-title">city: ${this.city}</h4>
+            <p class="card-text">zip: ${this.zip}</p>
+            <p class="card-text">address: ${this.address}</p>
+            <p class="card-text">doornumber: ${this.doornumber}</p>
+            <p class="card-text">description: ${this.description}</p>
+          
+        </div>
+      
+    `;
+  }
+   
+
+}*/
+
+
+let array = [
+{ type: "location", city: "wien", zip:2700, address:"muhlgasse", doornumber:"36", images:"img/market1.png", images:"img/market1.png", author:"mireille", day:23, month:"fevrier", year: 2020},
+{ type: "location", city: "wien", zip:2700, address:"muhlgasse", doornumber:"36", images:"img/shirley.png", author:"mireille", day:23, month:"fevrier", year: 2020},
+{ type: "location", city: "wien", zip:2700, address:"muhlgasse", doornumber:"36", images:"img/market1.png", author:"mireille", day:23, month:"fevrier", year: 2020},
+{ type: "location", city: "wien", zip:2700, address:"muhlgasse", doornumber:"36", images:"img/market1.png", author:"mireille", day:23, month:"fevrier", year: 2020},
+{ type: "location", city: "wien", zip:2700, address:"muhlgasse", doornumber:"36", images:"img/market1.png", author:"mireille", day:23, month:"fevrier", year: 2020},
+{ type: "location", city: "wien", zip:2700, address:"muhlgasse", doornumber:"36", images:"img/market1.png", author:"mireille", day:23, month:"fevrier", year: 2020},
+{ type: "location", city: "wien", zip:2700, address:"muhlgasse", doornumber:"36", images:"img/market1.png", author:"mireille", day:23, month:"fevrier", year: 2020},
+{ type: "location", city: "wien", zip:2700, address:"muhlgasse", doornumber:"36", images:"img/market1.png", author:"mireille", day:23, month:"fevrier", year: 2020},
+];
+for( let i = 0; i<Localite.length; i++){
+  document.getElementById("target").innerHTML += `
+  
+  <div class="activities-panel">
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4"">
+       <div class= "post"> 
+    <img class="avatar" src="img/pin.png">
+  
+		
+        		<h4 class="card-text"">${this.city}        		
+        		<small><button type="button" class="btn btn-primary">
+  				Profile <span class="badge badge-light">100</span>
+  				</button></small></h4>
+
+      <div class="card">  		 
+      			     		
+   			    <div>              
+            	 <img class="card-img-top" src="{${Localite[i]}${this.images}}" alt="${this.city}" width="300">
+            </div> 
+           	<div class="absoluteTop">
+              	<h4><span class="badge badge-light text-primary">${this.type}</span></h4>
+            </div>         
+          	
+          	<div class="card-img-overlay">
+            	<p class="card-text">${this.author}${this.day}${this.month}${this.year}</p>
+          	</div>
+          	<p onclick="window.open('singlemarket.html')" class="link" id="redirect">W3docs</p>
+      </div>
+  </div>   
+  </div>
+
+  </div>
+    `;
+
+/*let arr1 = new Localite(
+
+
+	'3',
+  'location',
+  'wien',
+  '1200',
+  'hsurnrk',
+  '27',
+  'img/sleep.png',
+  'mireille',
+  '21',
+  'fevrier',
+  '2020',
+  
+  false,
+  
+);
+let arr2 = new Localite(
+	'4',
+'location',
+  'wien',
+  '1200',
+  'hsurnrk',
+  '27',
+  'img/maroc.png',
+  'mireille',
+  '21',
+  'fevrier',
+  '2020',  
+  false,
+);
+let arr3 = new Localite(
+	'5',
+  'location',
+  'wien',
+  '1200',
+  'hsurnrk',
+  '27',
+  'img/mar3.png',
+  'mireille',
+  '21',
+  'fevrier',
+  '2020',
+  
+  false,
+  
+);
+let arr4 = new Localite(
+	'6',
+'location',
+  'wien',
+  '1200',
+  'hsurnrk',
+  '27',
+  'img/shirley.png',
+  'mireille',
+  '21',
+  'fevrier',
+  '2020',
+  
+  false,
+);
+
+/*function renderOJHTML(classname) {
+  let locationContent: string = '';
+
+  for (let tempID in localiteArray) {
+    if (localiteArray[tempID].type == classname) {
+      locationContent += localiteArray[tempID].Info();
+    };
+  };
+
+  $('#' + name).replaceWith(`<div class="row text-center mt-1" id=${name}>${locationContent}</div>`);
+};
+
+
 
 
 
